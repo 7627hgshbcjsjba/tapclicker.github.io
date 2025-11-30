@@ -1,1 +1,44 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+<title>Click Ranker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+margin:0;height:100vh;background:#111;color:white;font-family:Arial;text-align:center;
+user-select:none;overflow:hidden;
+}
+#clickArea {
+width:100%;height:100%;display:flex;flex-direction:column;
+justify-content:center;align-items:center;background:#222;
+}
+.number {font-size:60px;font-weight:bold;margin:10px 0;}
+.rank {font-size:30px;margin-top:10px;}
+</style>
+</head>
+<body>
+<div id="clickArea">
+<div class="number" id="clickCount">0</div>
+<div class="rank" id="rankText">Rank: Noobie 1</div>
+<p>Tap anywhere to increase your score</p>
+</div>
+<script>
+let clicks=0;
+const clickArea=document.getElementById("clickArea");
+const clickCount=document.getElementById("clickCount");
+const rankText=document.getElementById("rankText");
+function updateRank(){
+if(clicks>=100){
+rankText.innerText="Rank: Noobie 2";
+}else{
+rankText.innerText="Rank: Noobie 1";
+}
+}
+function addClick(){
+clicks++;clickCount.innerText=clicks;updateRank();
+}
+clickArea.addEventListener("click",addClick);
+clickArea.addEventListener("touchstart",addClick);
+</script>
+</body>
+</html>
